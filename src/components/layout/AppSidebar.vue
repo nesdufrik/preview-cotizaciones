@@ -23,14 +23,14 @@ const navigation = [
       isCollapsed ? 'w-16' : 'w-64'
     ]"
   >
-    <div class="h-full px-3 py-4 overflow-y-auto bg-background text-foreground">
+    <div class="h-full px-2 py-4 overflow-y-auto bg-background text-foreground">
       <div class="flex items-center justify-between mb-5 px-2">
         <h1 v-if="!isCollapsed" class="text-xl font-semibold text-primary">AdminCotizaciones</h1>
         <button @click="isCollapsed = !isCollapsed" class="p-2 rounded-lg hover:bg-accent">
-          {{ isCollapsed ? '→' : '←' }}
+          {{ isCollapsed ? '▶️' : '◀️' }}
         </button>
       </div>
-      <ul class="space-y-2 font-medium">
+      <ul class="space-2 font-medium list-none">
         <li v-for="item in navigation" :key="item.name">
           <RouterLink
             :to="item.path"
