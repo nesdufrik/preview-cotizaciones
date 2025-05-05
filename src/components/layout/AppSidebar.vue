@@ -1,24 +1,9 @@
 <script setup lang="ts">
 import { useAuthStore } from '../../stores/auth'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 const authStore = useAuthStore()
 const isCollapsed = ref(false)
-const isDark = ref(false)
-
-const toggleTheme = () => {
-  isDark.value = !isDark.value
-  document.documentElement.classList.toggle('dark')
-  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
-}
-
-onMounted(() => {
-  const theme = localStorage.getItem('theme')
-  isDark.value = theme === 'dark'
-  if (isDark.value) {
-    document.documentElement.classList.add('dark')
-  }
-})
 
 const navigation = [
   { name: 'Inicio', path: '/', icon: '🏠' },
@@ -41,14 +26,9 @@ const navigation = [
     <div class="h-full px-3 py-4 overflow-y-auto bg-background text-foreground">
       <div class="flex items-center justify-between mb-5 px-2">
         <h1 v-if="!isCollapsed" class="text-xl font-semibold text-primary">AdminCotizaciones</h1>
-        <div class="flex gap-2">
-          <button @click="toggleTheme" class="p-2 rounded-lg hover:bg-accent">
-            {{ isDark ? '🌙' : '☀️' }}
-          </button>
-          <button @click="isCollapsed = !isCollapsed" class="p-2 rounded-lg hover:bg-accent">
-            {{ isCollapsed ? '→' : '←' }}
-          </button>
-        </div>
+        <button @click="isCollapsed = !isCollapsed" class="p-2 rounded-lg hover:bg-accent">
+          {{ isCollapsed ? '→' : '←' }}
+        </button>
       </div>
       <ul class="space-y-2 font-medium">
         <li v-for="item in navigation" :key="item.name">
