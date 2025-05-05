@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": [
+    "@eslint/js",
+    "plugin:vue/vue3-recommended",
+    "@vue/eslint-config-prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  }
+}
